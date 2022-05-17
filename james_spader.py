@@ -67,4 +67,5 @@ for name in os.listdir("."):
     spade_log(name)
 os.chdir("..")
 open("james_spader_results.JSON", "w").write(json.dumps({key: value.orders for (key, value) in tracked_monsters.items() if len(value.orders) == 1}))
+open("james_spader_skipped_monsters.JSON", "w").write(json.dumps(DropPermutation.too_big_skipped))
 

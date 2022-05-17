@@ -1,11 +1,15 @@
 from sympy.utilities.iterables import multiset_permutations
 class DropPermutation:
+    too_big_skipped = []
     def __init__(self, name, drops):
         self.name = name
         self.base_drops = drops
-        self.orders = list(multiset_permutations(drops))
+        self.orders = list(multiset_permutations(drops)) if len(self.base_drops) <= 7 else []
+        if self.orders == []:
+            DropPermutation.too_big_skipped.append(name)
     
     def filter_options(self, drop_order):
+        if self.orders == []: return
         drop_order = [drop for drop in drop_order if drop in self.base_drops]
         if not self.__verify_drops_make_sense(drop_order): return
         if len(drop_order) <= 1: return
