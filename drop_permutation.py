@@ -1,6 +1,7 @@
 from sympy.utilities.iterables import multiset_permutations
 class DropPermutation:
     too_big_skipped = []
+    __slots__ = ["name", "base_drops", "orders"]
     def __init__(self, name, drops):
         self.name = name
         self.base_drops = drops
